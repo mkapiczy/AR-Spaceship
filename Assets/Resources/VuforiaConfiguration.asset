@@ -44,9 +44,9 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - TargetImages
+    - Spaceship
     dataSetsToActivate:
-    - TargetImages
+    - Spaceship
   videoBackground:
     clippingMode: 0
     numDivisions: 2
