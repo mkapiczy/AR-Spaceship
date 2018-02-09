@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script : MonoBehaviour {
+public class LandingScript : MonoBehaviour {
 
 	private GameObject airway;
 	private GameObject plane;
