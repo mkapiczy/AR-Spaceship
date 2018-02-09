@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class Script : MonoBehaviour {
 
-	private GameObject landingWay;
-	private GameObject spaceShuttle;
-	private Matrix4x4 landingMatrix;
-	private Matrix4x4 spaceShuttleMatrix;
+	private GameObject airway;
+	private GameObject plane;
+	private GameObject quad;
 	// Use this for initialization
 	void Start () {
-		landingWay = GameObject.Find("LandingWay");
-		spaceShuttle = GameObject.Find("SpaceShuttle");
-		Vector3 landingPosition = landingWay.transform.position;
-		Vector3 spaceShuttlePosition = spaceShuttle.transform.position;
-
+		airway = GameObject.Find("Airway");
+		plane = GameObject.Find("Plane");
+		quad = GameObject.Find("Quad");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		landingMatrix = landingWay.transform.localToWorldMatrix;
-		spaceShuttleMatrix = spaceShuttle.transform.localToWorldMatrix;
+		Vector3 airwayForward = airway.transform.forward;
+		Vector3 planeForward = plane.transform.forward;
 
+		Vector3 airwayRight = airway.transform.right;
+		Vector3 planeRight = plane.transform.right;
 
-		Debug.Log ("Space" + spaceShuttleMatrix);
-		Debug.Log ("Landing" + landingMatrix);
-		Debug.Log ("Dot product" + spaceShuttleMatrix * landingMatrix);
+		float forward = Vector3.Dot (planeForward, airwayForward);
+		float right = Vector3.Dot (planeRight, airwayRight);
 
+		if (forward >= 0.98 && right >= 0.98) {
+			quad.GetComponent<Renderer> ().material.color = Color.green;
+		} else if (forward < 0.98 && right >= 0.98) {
+			quad.GetComponent<Renderer> ().material.color = Color.yellow;
+		} else if (right < 0.98 && right >= 0.40  && forward < 0.98 && forward >= 0.40) {
+			quad.GetComponent<Renderer> ().material.color = Color.magenta;
+		} else if (right <0.40 && forward < 0.40) {
+			quad.GetComponent<Renderer> ().material.color = Color.red;
+		}
+			
+		Debug.Log ("Forwards " + forward);
+		Debug.Log ("Right " + right);
 	}
 
 	/**************************************************************************/

@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 108660746}
   - component: {fileID: 108660745}
   m_Layer: 0
-  m_Name: SpaceShuttle
+  m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,15 +207,15 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: plane
+  mTrackableName: plane2
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/Spaceship.xml
   mExtendedTracking: 0
-  mAspectRatio: 1.7248062
+  mAspectRatio: 1.4700854
   mImageTargetType: 0
-  mWidth: 6
-  mHeight: 10.348837
+  mWidth: 10
+  mHeight: 14.700854
 --- !u!4 &108660750
 Transform:
   m_ObjectHideFlags: 0
@@ -223,13 +223,111 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 108660744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: -30}
-  m_LocalScale: {x: 10.348837, y: 10.348837, z: 10.348837}
+  m_LocalPosition: {x: 0, y: 10, z: -20}
+  m_LocalScale: {x: 14.700854, y: 14.700854, z: 14.700854}
   m_Children:
   - {fileID: 944271591}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &410002489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 410002490}
+  - component: {fileID: 410002493}
+  - component: {fileID: 410002492}
+  - component: {fileID: 410002491}
+  - component: {fileID: 410002494}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410002490
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410002489}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.001, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 944271591}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &410002491
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410002489}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3d94a98e8a1f2d842818036799251320, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &410002492
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410002489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &410002493
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410002489}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &410002494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410002489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950fd1d2a15394008a688be54ed88dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &470239609
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,13 +420,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470239609}
-  m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 40, y: 50, z: 0}
-  m_LocalScale: {x: 0.894892, y: 0.89489174, z: 0.89489174}
+  m_LocalRotation: {x: 0.454578, y: 0.5416261, z: -0.45457807, w: 0.5416261}
+  m_LocalPosition: {x: 0, y: 50, z: -10}
+  m_LocalScale: {x: 0.894892, y: 0.89489174, z: 0.8893923}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 80.012, y: 90.00001, z: 0}
 --- !u!1 &476111447
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +441,7 @@ GameObject:
   - component: {fileID: 476111449}
   - component: {fileID: 476111448}
   m_Layer: 0
-  m_Name: LandingWay
+  m_Name: Airway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +563,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 156b217924734336a95255962d11e3d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e37573583274e4bba59a88757400377, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -480,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944271591}
   m_Layer: 0
-  m_Name: SpaceShuttleObject
+  m_Name: PlaneObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +593,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.288438, y: 8.288438, z: 8.288438}
-  m_Children: []
+  m_Children:
+  - {fileID: 410002490}
   m_Father: {fileID: 108660750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -516,7 +615,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.28988764, y: 0, z: 0.5}
+      m_Extent: {x: 0.3401163, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -569,7 +668,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 276c94be00000000000000bf000000000000803f000000000000000000000000276c94be000000000000003f000000000000803f00000000000000000000803f276c943e00000000000000bf000000000000803f000000000000803f00000000276c943e000000000000003f000000000000803f000000000000803f0000803f
+    _typelessdata: b923aebe00000000000000bf000000000000803f000000000000000000000000b923aebe000000000000003f000000000000803f00000000000000000000803fb923ae3e00000000000000bf000000000000803f000000000000803f00000000b923ae3e000000000000003f000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -765,7 +864,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: planeMaterial
+  m_Name: plane2Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -778,7 +877,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a70e96e30ae44a539c3ecdf7b96d228a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 648eca6867b34267b05b417217c4cd5a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -796,7 +895,7 @@ GameObject:
   - component: {fileID: 1907737222}
   - component: {fileID: 1907737221}
   m_Layer: 0
-  m_Name: LandingWayObject
+  m_Name: AirwayObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +909,7 @@ Transform:
   m_GameObject: {fileID: 1907737219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01363222, y: 0.01363222, z: 0.01363222}
+  m_LocalScale: {x: 0.02, y: 0.2, z: 0.02}
   m_Children: []
   m_Father: {fileID: 476111453}
   m_RootOrder: 0
@@ -829,7 +928,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30b97d537113d0441889f1559f555128, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
