@@ -6,15 +6,31 @@ public class FalconScript : MonoBehaviour {
 	private GameObject falcon;
 	private GameObject enemyShip;
 
+	public float rayLength = 20;
+	private Ray ray;
+
+
 	// Use this for initialization
 	void Start () {
-		falcon = GameObject.Find("falcon");
+		Debug.Log ("Start");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 falconForward = falcon.transform.forward;
+		ray = new Ray (falcon.transform.position, falcon.transform.forward);
 
-		Debug.Log ("test");
+		if (Input.GetKeyDown ("space")) {
+			Debug.Log("space key was pressed");
+			Debug.Log (ray.origin);
+			Debug.Log (ray.direction);
+			Debug.DrawRay (ray.origin, ray.direction * rayLength);
+			
+		}
+	}
+
+	void OnGUI() {
+		GUI.color = Color.red;
+		GUI.Label(new Rect(10, 10, 500, 100), "Test");
 	}
 }
