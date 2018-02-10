@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="plane2" size="10.000000 14.700854" />
+    <ImageTarget name="plane4" size="8.000000 11.154004" />
     <ImageTarget name="airway" size="10.000000 26.386913" />
     <ImageTarget name="plane" size="6.000000 10.348837" />
     <ImageTarget name="spaceship" size="7.000000 9.401295" />

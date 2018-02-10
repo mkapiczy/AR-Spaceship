@@ -10,6 +10,11 @@ public class EarthScript : MonoBehaviour {
 	private Vector3 nosePositionInRelationToEarth;
 	private Vector3 positionTest;
 
+
+	private float xBoundary = 0.5f;
+	private float yBoundary = 0.5f;
+	private float zBoundary = 0.5f;
+
 	// Use this for initialization
 	void Start () {
 		earth = GameObject.Find ("Earth");
@@ -27,7 +32,8 @@ public class EarthScript : MonoBehaviour {
 		Matrix4x4 transformToEarthLocalCoordinates = earthTransform.inverse * planeTransform;
 
 		nosePositionInRelationToEarth = transformToEarthLocalCoordinates * nosePosition;
-		positionTest = planeNose.transform.position;
+		positionTest = earth.transform.position;
+
 	}
 
 	private void OnGUI(){
