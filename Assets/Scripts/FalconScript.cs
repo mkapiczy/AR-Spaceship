@@ -16,9 +16,13 @@ public class FalconScript : MonoBehaviour {
 	private Vector3 canon2LocalPosition = new Vector3 (-0.65f, 0, 3.5f);
 	private Vector3 canon1WorldPosition;
 	private Vector3 canon2WorldPosition;
+	private Vector3 canonTopLocalPosition = new Vector3 (0, 2.5f, 0);
+	private Vector3 canonTopWorldPosition;
 	private RaycastHit hit1;
 	private RaycastHit hit2;
-//	private RaycastHit hitCanon2;
+
+	public float yaw = 30;
+	public float pitch = 45;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +38,7 @@ public class FalconScript : MonoBehaviour {
 		
 		canon1WorldPosition = falcon.transform.position + falcon.transform.rotation * canon1LocalPosition;
 		canon2WorldPosition = falcon.transform.position + falcon.transform.rotation * canon2LocalPosition;
+		canonTopWorldPosition = falcon.transform.position + falcon.transform.rotation * canonTopLocalPosition;
 		//toggle laser
 		if (Input.GetKeyDown ("space")) {
 			shootCenter = !shootCenter;
@@ -50,6 +55,15 @@ public class FalconScript : MonoBehaviour {
 				status = "Front lasers started!";
 			} else {
 				status = "Front lasers stopped!";
+			}
+		}
+
+		if (Input.GetKeyDown ("m")) {
+			shootTop = !shootTop;
+			if (shootTop) {
+				status = "Top laser started!";
+			} else {
+				status = "Top laser stopped!";
 			}
 		}
 
@@ -100,7 +114,8 @@ public class FalconScript : MonoBehaviour {
 			GL.Vertex (falcon.transform.position);
 			GL.Vertex (falcon.transform.position + falcon.transform.forward * rayLength);
 			GL.End ();
-		} else if (shootFront) {
+		} 
+		if (shootFront) {
 			if (laserMaterial == null) {
 				laserMaterial = new Material (Shader.Find ("Hidden/Internal-Colored"));
 			}	
@@ -115,9 +130,22 @@ public class FalconScript : MonoBehaviour {
 			GL.Vertex (canon2WorldPosition);
 			GL.Vertex (canon2WorldPosition + falcon.transform.forward * rayLength);
 			GL.End ();
-		} else {
+		} 
+		if (shootTop) {
+			if (laserMaterial == null) {
+				laserMaterial = new Material (Shader.Find ("Hidden/Internal-Colored"));
+			}	
+			Quaternion rotation = Quaternion.Euler (0, yaw, pitch);
+			laserMaterial.SetPass (0);
+			GL.Begin (GL.LINES);
+			GL.Color (Color.blue);
+			Vector3 laserRotation = new Vector3 (rotation.eulerAngles.x + falcon.transform.forward.x, rotation.eulerAngles.y + falcon.transform.forward.y, rotation.eulerAngles.z + falcon.transform.forward.z);
+			GL.Vertex (canonTopWorldPosition);
+			GL.Vertex (canonTopWorldPosition + laserRotation * rayLength);
+			GL.End ();
+		} 
+		if(!shootCenter && !shootFront && !shootTop) {
 			laserMaterial = null;
-
 		}
 	}
 }
