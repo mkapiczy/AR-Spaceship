@@ -9,7 +9,8 @@ public class FalconScript : MonoBehaviour {
 
 	public float rayLength = 20;
 	private Ray ray;
-
+	private bool drawLine;
+	private string status;
 
 	// Use this for initialization
 	void Start () {
@@ -23,30 +24,39 @@ public class FalconScript : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown ("space")) {
-			Debug.Log("space key was pressed");
-			Debug.DrawRay (falcon.transform.position, falcon.transform.forward * rayLength);
+			if (drawLine) {
+				drawLine = false;
+				Debug.Log("Laser stopped!");
+				status = "Laser stopped!";
+			
+			} else {
+				drawLine = true;
+				Debug.Log("Laser started!");
+				status = "Laser started!";
+			}
+
 			
 		}
 	}
 
 	void OnGUI() {
 		GUI.color = Color.red;
-		GUI.Label(new Rect(10, 10, 500, 100), "Test");
+		GUI.Label(new Rect(10, 10, 500, 100), status);
 	}
 
 	void OnRenderObject(){
-		if (material == null) {
-			material = new Material (Shader.Find ("Hidden/Internal-Colored"));
-		}	
+		if (drawLine) {
+			if (material == null) {
+				material = new Material (Shader.Find ("Hidden/Internal-Colored"));
+			}	
+			Debug.Log ("HERE");
+			material.SetPass (0);
+			GL.Begin (GL.LINES);
+			GL.Color (Color.red);
+			GL.Vertex (falcon.transform.position);
+			GL.Vertex (falcon.transform.position + falcon.transform.forward * rayLength);
+			GL.End ();
 
-		material.SetPass (0);
-		GL.Begin (GL.LINES);
-		GL.Color (Color.red);
-		GL.Vertex (falcon.transform.position);
-		GL.Vertex (falcon.transform.position + falcon.transform.forward * rayLength);
-		GL.End ();
-	
+		}
 	}
-
-
 }
