@@ -130,7 +130,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.49511167, y: 0, z: 0.5}
+      m_Extent: {x: 0.49511173, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -183,7 +183,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 477ffdbe00000000000000bf000000000000803f000000000000000000000000477ffdbe000000000000003f000000000000803f00000000000000000000803f477ffd3e00000000000000bf000000000000803f000000000000803f00000000477ffd3e000000000000003f000000000000803f000000000000803f0000803f
+    _typelessdata: 497ffdbe00000000000000bf000000000000803f000000000000000000000000497ffdbe000000000000003f000000000000803f00000000000000000000803f497ffd3e00000000000000bf000000000000803f000000000000803f00000000497ffd3e000000000000003f000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -395,7 +395,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294144737}
   m_LocalRotation: {x: -0.0005026142, y: -0.00000022113618, z: 0.008220549, w: 0.9999661}
-  m_LocalPosition: {x: 0, y: -0, z: 0.432}
+  m_LocalPosition: {x: -0.0267, y: -0.0004, z: 0.4748}
   m_LocalScale: {x: 0.06802326, y: 0.06802326, z: 0.06802326}
   m_Children: []
   m_Father: {fileID: 522966857}
@@ -494,12 +494,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470239609}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 60, z: 0}
+  m_LocalPosition: {x: 0, y: 40, z: 0}
   m_LocalScale: {x: 0.894892, y: 0.89489174, z: 0.89489174}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
 --- !u!1 &522966850
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,15 +724,15 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: earth
+  mTrackableName: earth2
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/Spaceship.xml
   mExtendedTracking: 0
-  mAspectRatio: 1.0098732
+  mAspectRatio: 1.009873
   mImageTargetType: 0
-  mWidth: 20
-  mHeight: 20.197462
+  mWidth: 19.5
+  mHeight: 19.692524
 --- !u!4 &748182103
 Transform:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ Transform:
   m_GameObject: {fileID: 748182097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20.197462, y: 20.197462, z: 20.197462}
+  m_LocalScale: {x: 19.692524, y: 19.692524, z: 19.692524}
   m_Children:
   - {fileID: 1917715520}
   m_Father: {fileID: 0}
@@ -786,7 +786,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9e9ce6bca1704579bd5e8ce23eeffa38, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a957ffff1b54ee78551867d04e19d98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -1060,7 +1060,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: earthMaterial
+  m_Name: earth2Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1093,7 +1093,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9d59ee9299a448919c2e4a844542741e, type: 3}
+        m_Texture: {fileID: 2800000, guid: a8a68c8bea8d4cf69a071962c71d9e4d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
