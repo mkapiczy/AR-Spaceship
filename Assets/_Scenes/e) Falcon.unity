@@ -317,10 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b08f9aecd5634cffa206e9b3c14b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 20
   explosion: {fileID: 0}
-  yaw: 30
-  pitch: 45
+  rayLength: 20
+  yaw: 0
+  pitch: 0
 --- !u!65 &202268565
 BoxCollider:
   m_ObjectHideFlags: 0

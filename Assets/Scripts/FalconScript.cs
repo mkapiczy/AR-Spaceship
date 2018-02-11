@@ -5,32 +5,34 @@ using UnityEngine;
 public class FalconScript : MonoBehaviour {
 	private GameObject falcon;
 	private GameObject enemyShip;
-	private Material laserMaterial;
+	public GameObject explosion;
 
+	private Material laserMaterial;
 	public float rayLength = 20;
 	private Ray ray;
+
 	private bool shootCenter, shootFront, shootTop, isCollided;
 	private string status;
-	public GameObject explosion;
+
 	private Vector3 canon1LocalPosition = new Vector3 (0.65f, 0, 3.5f);
 	private Vector3 canon2LocalPosition = new Vector3 (-0.65f, 0, 3.5f);
 	private Vector3 canon1WorldPosition;
 	private Vector3 canon2WorldPosition;
+
 	private Vector3 canonTopLocalPosition = new Vector3 (0, 2.5f, 0);
 	private Vector3 canonTopWorldPosition;
+	private Vector3 canonTopDirection;
 	private RaycastHit hit1;
 	private RaycastHit hit2;
 
-	public float yaw = 30;
-	public float pitch = 45;
+	public float yaw = 0;
+	public float pitch = 0;
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Start");
 		falcon = GameObject.Find("falcon");
 		explosion = GameObject.Find ("ExplosionPrefab");
 		enemyShip = GameObject.Find ("enemyShip");
-
 	}
 
 	// Update is called once per frame
@@ -40,6 +42,7 @@ public class FalconScript : MonoBehaviour {
 		canon2WorldPosition = falcon.transform.position + falcon.transform.rotation * canon2LocalPosition;
 		canonTopWorldPosition = falcon.transform.position + falcon.transform.rotation * canonTopLocalPosition;
 		//toggle laser
+
 		if (Input.GetKeyDown ("space")) {
 			shootCenter = !shootCenter;
 			if (shootCenter) {
@@ -70,10 +73,11 @@ public class FalconScript : MonoBehaviour {
 		isCollided = IsCollided ();
 
 		if (isCollided && (shootCenter || shootFront || shootTop)) {
-			if (shootCenter) {
+			if (shootCenter || shootTop) {
 				GameObject explosionInstance = Instantiate (explosion, hit1.point, Quaternion.identity);
 				Destroy (explosionInstance, 10f);
-			} else if (shootFront) {
+			} 
+			if (shootFront) {
 				GameObject explosionInstance1 = Instantiate (explosion, hit1.point, Quaternion.identity);
 				GameObject explosionInstance2 = Instantiate (explosion, hit2.point, Quaternion.identity);
 				Destroy (explosionInstance1, 10f);
@@ -91,7 +95,7 @@ public class FalconScript : MonoBehaviour {
 				|| (Physics.Raycast (new Ray (canon2WorldPosition, falcon.transform.forward), out hit2, rayLength));
 		}
 		if(shootTop){
-			return false;
+			return (Physics.Raycast (new Ray (canonTopWorldPosition, canonTopDirection), out hit1, rayLength));
 		}
 		return false;
 	}
@@ -103,7 +107,6 @@ public class FalconScript : MonoBehaviour {
 
 	void OnRenderObject(){
 		//make laser on GUI
-		//TODO:: change this to drawLine instead of true.
 		if (shootCenter) {
 			if (laserMaterial == null) {
 				laserMaterial = new Material (Shader.Find ("Hidden/Internal-Colored"));
@@ -135,13 +138,15 @@ public class FalconScript : MonoBehaviour {
 			if (laserMaterial == null) {
 				laserMaterial = new Material (Shader.Find ("Hidden/Internal-Colored"));
 			}	
-			Quaternion rotation = Quaternion.Euler (0, yaw, pitch);
+				
 			laserMaterial.SetPass (0);
 			GL.Begin (GL.LINES);
 			GL.Color (Color.blue);
-			Vector3 laserRotation = new Vector3 (rotation.eulerAngles.x + falcon.transform.forward.x, rotation.eulerAngles.y + falcon.transform.forward.y, rotation.eulerAngles.z + falcon.transform.forward.z);
 			GL.Vertex (canonTopWorldPosition);
-			GL.Vertex (canonTopWorldPosition + laserRotation * rayLength);
+
+			Quaternion rotation = Quaternion.Euler (pitch, 0, yaw);
+			canonTopDirection = rotation * falcon.transform.forward;
+			GL.Vertex (canonTopWorldPosition + canonTopDirection * rayLength);
 			GL.End ();
 		} 
 		if(!shootCenter && !shootFront && !shootTop) {
